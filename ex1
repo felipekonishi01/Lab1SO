@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+int main(void) {
+  int n;
+  printf("Digite a ordem da matriz quadrada: ");
+  scanf("%d", &n);
+
+ 
+  int **matrix = (int **)malloc(n * sizeof(int *));
+  for (int i = 0; i < n; i++) {
+    matrix[i] = (int *)malloc(n * sizeof(int));
+  }
+
+  
+  printf("Digite os elementos da matriz:\n");
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      scanf("%d", &matrix[i][j]);
+    }
+  }
+
+ 
+  int min_element = INT_MAX;
+  int min_row = 0;
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      if (matrix[i][j] < min_element) {
+        min_element = matrix[i][j];
+        min_row = i;
+      }
+    }
+  }
+
+ 
+  printf("A linha que contém o menor elemento é: %d\n", min_row + 1);
+
+ 
+  for (int i = 0; i < n; i++) {
+    free(matrix[i]);
+  }
+  free(matrix);
+
+  return 0;
+}
