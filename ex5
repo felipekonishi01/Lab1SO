@@ -1,0 +1,76 @@
+#include <stdio.h>
+
+int main() {
+  int linhas, colunas, num, i, j;
+
+  // Lendo as dimensões da matriz
+  printf("Digite o número de linhas da matriz: ");
+  scanf("%d", &linhas);
+  printf("Digite o número de colunas da matriz: ");
+  scanf("%d", &colunas);
+
+  // Alocando memória para a matriz
+  int matriz[linhas][colunas];
+
+  // Lendo os elementos da matriz
+  printf("Digite os elementos da matriz:\n");
+  for (i = 0; i < linhas; i++) {
+    for (j = 0; j < colunas; j++) {
+      scanf("%d", &matriz[i][j]);
+    }
+  }
+
+  // Lendo o número pelo qual multiplicar
+  printf("Digite o número pelo qual multiplicar: ");
+  scanf("%d", &num);
+
+  // Escolhendo a operação (linha ou coluna)
+  int opcao;
+  printf("Digite 1 para multiplicar uma linha, 2 para multiplicar uma coluna: ");
+  scanf("%d", &opcao);
+
+  // Multiplicando uma linha
+  if (opcao == 1) {
+    int linha;
+    printf("Digite o número da linha a ser multiplicada: ");
+    scanf("%d", &linha);
+
+    // Verificando se a linha é válida
+    if (linha < 1 || linha > linhas) {
+      printf("Linha inválida!\n");
+    } else {
+      // Multiplicando a linha
+      for (j = 0; j < colunas; j++) {
+        matriz[linha - 1][j] *= num;
+      }
+    }
+  }
+
+  // Multiplicando uma coluna
+  else if (opcao == 2) {
+    int coluna;
+    printf("Digite o número da coluna a ser multiplicada: ");
+    scanf("%d", &coluna);
+
+    // Verificando se a coluna é válida
+    if (coluna < 1 || coluna > colunas) {
+      printf("Coluna inválida!\n");
+    } else {
+      // Multiplicando a coluna
+      for (i = 0; i < linhas; i++) {
+        matriz[i][coluna - 1] *= num;
+      }
+    }
+  }
+
+  // Imprimindo a matriz modificada
+  printf("Matriz modificada:\n");
+  for (i = 0; i < linhas; i++) {
+    for (j = 0; j < colunas; j++) {
+      printf("%d ", matriz[i][j]);
+    }
+    printf("\n");
+  }
+
+  return 0;
+}
