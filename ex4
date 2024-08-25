@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+  char name1[50], name2[50];
+
+  printf("primeiro nome: ");
+  scanf("%s", name1);
+
+  printf("segundo nome: ");
+  scanf("%s", name2);
+
+  if (strcmp(name1, name2) < 0) {
+    printf("%s, %s\n", name1, name2);
+  } else {
+    printf("%s, %s\n", name2, name1);
+  }
+
+  return 0;
+}
